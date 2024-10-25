@@ -1,12 +1,18 @@
+import Notification from "./components/Notification"
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Promo from "./components/Promo";
+import ServiceSection from "./components/ServiceSection";
+
 
 function App() {
   return (
     <>
-      <div className="bg-red-800 px-4">Hello world</div>
+      <Notification/>
       <Header/>
       <Hero/>
+      <Promo/>
+      <ServiceSection/>
     </>
   );
 }

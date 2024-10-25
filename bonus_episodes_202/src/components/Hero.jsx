@@ -1,40 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import image1 from '../assets/1.jpg'; // First slide image
+import image2 from '../assets/2.jpg'; // Second slide image
+import image3 from '../assets/3.jpg'; // Third slide image
+
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [
+    {
+      id: 1,
+      title: "Example headline",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, enim suscipit fuga voluptatum eveniet, facere et numquam nihil deserunt non nulla porro blanditiis perspiciatis? Suscipit, praesentium. Facilis deserunt ducimus accusantium!",
+      buttonText: "Sign up today",
+      img: image1, 
+    },
+    {
+      id: 2,
+      title: "Another example headline",
+      description:  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, enim suscipit fuga voluptatum eveniet, facere et numquam nihil deserunt non nulla porro blanditiis perspiciatis? Suscipit, praesentium. Facilis deserunt ducimus accusantium!",
+      buttonText: "Learn more",
+      img: image2, 
+    },
+    {
+      id: 3,
+      title: "One more for good measure",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, enim suscipit fuga voluptatum eveniet, facere et numquam nihil deserunt non nulla porro blanditiis perspiciatis? Suscipit, praesentium. Facilis deserunt ducimus accusantium!",
+      buttonText: "Browse gallery",
+      img: image3,
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 10000); // Automatically slide every 10 seconds
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [slides.length]);
+
+  const goToPreviousSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
   return (
-    <div id="myCarousel" className="carousel slide mb-6" data-bs-ride="carousel">
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img src="1.jpg" className="d-block w-50" height="50" />
-          <div className="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a className="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+    <div className="relative w-full overflow-hidden bg-ivory">
+      <div className="flex transition-transform duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+        {slides.map((slide) => (
+          <div key={slide.id} className="w-full flex-shrink-0 relative">
+            <img
+              src={slide.img}
+              alt={slide.title}
+              className="w-full h-[500px] object-cover" // `object-cover` sets a constant height
+            />
+            <div className="absolute inset-0  bg-sage bg-opacity-50 flex flex-col justify-center items-baseline p-4 ml-8 mr-8">
+              <h1 className="text-4xl font-bold font-fligen text-terracotta">{slide.title}</h1>
+              <p className="text-lg text-black mt-4 ml-10 mr-10 font-yeseva ">{slide.description}</p>
+              <a href="#" className="mt-4 inline-block bg-terracotta text-white font-bold px-4 py-2 rounded">{slide.buttonText}</a>
+            </div>
           </div>
-        </div>
-        <div className="carousel-item">
-          <img src="1.jpg" className="d-block w-100" height="400" />
-          <div className="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a className="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <img src="1.jpg" className="d-block w-100" height="400" />
-          <div className="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
+        ))}
       </div>
-      <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
+
+      {/* Controls */}
+      <button
+        onClick={goToPreviousSlide}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-sand p-2 rounded-full shadow-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+        </svg>
       </button>
-      <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
+
+      <button
+        onClick={goToNextSlide}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-sand p-2 rounded-full shadow-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+        </svg>
       </button>
     </div>
   );

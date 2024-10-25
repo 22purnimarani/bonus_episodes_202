@@ -1,0 +1,7 @@
+/* src/styles/fonts.css */
+@font-face {
+  font-family: "Fligen";
+  src: url("../assets/fonts/fligen/Fligen.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
