@@ -5,6 +5,7 @@ import Promo from "./components/Promo";
 import ServiceSection from "./components/ServiceSection";
 import FAQ from "./components/FAQ";
 import ProductList from "./components/ProductList"; // Import your ProductList component
+import PromoCards from "./components/PromoCards";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <>
             <Hero />
             <Promo />
+            <PromoCards/>
             <ServiceSection />
             <FAQ />
           </>
