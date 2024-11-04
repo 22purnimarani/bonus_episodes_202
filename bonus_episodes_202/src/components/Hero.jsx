@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import image1 from '../assets/1.jpg'; // First slide image
 import image2 from '../assets/2.jpg'; // Second slide image
 import image3 from '../assets/3.jpg'; // Third slide image
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -45,7 +46,8 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden bg-ivory">
+    <section id="hero">
+    <div className="mt-10 relative w-full overflow-hidden bg-ivory">
       <div className="flex transition-transform duration-700" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {slides.map((slide) => (
           <div key={slide.id} className="w-full flex-shrink-0 relative">
@@ -57,7 +59,8 @@ const Hero = () => {
             <div className="absolute inset-0  bg-sage bg-opacity-50 flex flex-col justify-center items-baseline p-4 ml-8 mr-8">
               <h1 className="text-4xl font-bold font-fligen text-terracotta">{slide.title}</h1>
               <p className="text-lg text-black mt-4 ml-10 mr-10 font-yeseva ">{slide.description}</p>
-              <a href="#" className="mt-4 inline-block bg-terracotta text-white font-bold px-4 py-2 rounded">{slide.buttonText}</a>
+              <Link to="/products" className="mt-4 inline-block bg-terracotta text-white font-bold px-4 py-2 rounded">{slide.buttonText}</Link>
+             
             </div>
           </div>
         ))}
@@ -82,6 +85,7 @@ const Hero = () => {
         </svg>
       </button>
     </div>
+    </section>
   );
 };
 

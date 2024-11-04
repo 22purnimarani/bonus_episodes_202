@@ -4,7 +4,8 @@ import { faShippingFast, faUndoAlt, faHeadset, faCreditCard } from '@fortawesome
 
 const ServiceSection = () => {
   return (
-    <div className="flex justify-evenly px-6 py-12 mt-16 bg-ivory bg-opacity-30">
+    <section id="service">
+    <div className="flex justify-evenly px-6 py-12 mt-10 bg-ivory bg-opacity-30">
       {/* Free Shipping */}
       <div className="flex flex-col items-center">
         <FontAwesomeIcon icon={faShippingFast} className="text-4xl text-sage mb-2" />
@@ -33,6 +34,7 @@ const ServiceSection = () => {
         <p className="text-lg font-normal text-olive-green">Pay with Multiple Credit Cards</p>
       </div>
     </div>
+    </section>
   );
 }
 

@@ -2,7 +2,8 @@ import React from 'react';
 
 const Promo = () => {
   return (
-    <div className="p-1 flex flex-wrap items-center justify-center">
+    <section id="promo">
+    <div className="p-1 flex flex-wrap items-center justify-center mt-10">
       <div className="flex-shrink-0 m-6 relative overflow-hidden bg-sage bg-opacity-40 rounded-lg max-w-xs shadow-lg group">
         <svg
           className="absolute bottom-0 left-0 mb-8 scale-150 group-hover:scale-[1.65] transition-transform"
@@ -154,6 +155,7 @@ const Promo = () => {
         </div>
       </div>
       </div>
+      </section>
   );
 };
 
