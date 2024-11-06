@@ -1,5 +1,6 @@
 const PromoCard = ({ Image, buttonDescription, Description }) => {
   return (
+    <section id="promo">
     <div className="flex-grow border border-gray-200 rounded-lg shadow-md overflow-hidden relative">
       <img 
         src={Image} 
@@ -28,6 +29,7 @@ const PromoCard = ({ Image, buttonDescription, Description }) => {
         </button>
       </div>
     </div>
+    </section>
   );
 };
 

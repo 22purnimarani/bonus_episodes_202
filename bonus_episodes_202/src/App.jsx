@@ -1,12 +1,12 @@
 import Notification from "./components/Notification";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Promo from "./components/Promo";
 import ServiceSection from "./components/ServiceSection";
 import FAQ from "./components/FAQ";
 import ProductList from "./components/ProductList"; // Import your ProductList component
 import PromoCards from "./components/PromoCards";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import FeaturedProduct from "./components/FeaturedProduct";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={
           <>
             <Hero />
-            <Promo />
+            <FeaturedProduct />
             <PromoCards/>
             <ServiceSection />
             <FAQ />

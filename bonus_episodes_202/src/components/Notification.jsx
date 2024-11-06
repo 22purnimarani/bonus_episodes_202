@@ -2,7 +2,7 @@ import React from "react";
 
 const Notification = () => {
   return (
-    <div className=" inset-x-0 top-0 z-50">
+    <div className=" inset-x-0 top-0 z-50 bg-opacity-35">
       
     <div className="bg-terracotta ">
         <div className="mx-auto max-w-full py-1 px-3 sm:px-6 lg:px-8">
