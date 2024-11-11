@@ -1,65 +1,111 @@
-import React from 'react';
+import React, { useState } from "react";
+import ProductModal from './ProductModal'; // Import ProductModal
 
-const products = [
-  {
-    id: 1,
-    name: "Soft Plushy Cushion Chair",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
-    price: "$29.99",
-    bgColor: "bg-purple-50",
-  },
-  {
-    id: 2,
-    name: "Comfortable Wooden Chair",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
-    price: "$39.99",
-    bgColor: "bg-green-50",
-  },
-  {
-    id: 3,
-    name: "Multipurpose Wooden Trolly",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
-    price: "$19.99",
-    bgColor: "bg-red-50",
-  },
-  {
-    id: 4,
-    name: "Tool Set",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
-    price: "$49.99",
-    bgColor: "bg-blue-50",
-  },
-];
 
-// const Rating = ({ filled }) => (
-//     <div className="space-x-1 flex justify-center mt-10">
-//     <svg className="w-4 h-4 mx-px fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-//         <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z"></path>
-//     </svg>
-   
-// </div>
-
-// );
 
 const ProductList = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const products = [
+        {
+          id: 1,
+          name: "Soft Plushy Cushion Chair",
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
+          price: "$29.99",
+          frameSizes: ["8\"x10\"", "11\"x14\"", "16\"x20\""],
+          bgColor: "bg-purple-50",
+          image: "https://via.placeholder.com/150",
+          features: ["Soft fabric", "Comfortable", "Stylish design"],
+          thumbnails: [
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50"
+          ]
+        },
+        {
+          id: 2,
+          name: "Comfortable Wooden Chair",
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
+          price: "$39.99",
+          frameSizes: ["8\"x10\"", "11\"x14\"", "16\"x20\""],
+          bgColor: "bg-green-50",
+          image: "https://via.placeholder.com/150",
+          features: ["Natural wood", "Durable", "Comfortable seating"],
+          thumbnails: [
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50"
+          ]
+        },
+        {
+          id: 3,
+          name: "Multipurpose Wooden Trolly",
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
+          price: "$19.99",
+          frameSizes: ["8\"x10\"", "11\"x14\"", "16\"x20\""],
+          bgColor: "bg-red-50",
+          image: "https://via.placeholder.com/150",
+          features: ["Multipurpose", "Portable", "Durable"],
+          thumbnails: [
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50"
+          ]
+        },
+        {
+          id: 4,
+          name: "Tool Set",
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!",
+          price: "$49.99",
+          frameSizes: ["8\"x10\"", "11\"x14\"", "16\"x20\""],
+          bgColor: "bg-blue-50",
+          image: "https://via.placeholder.com/150",
+          features: ["Comprehensive", "Durable", "Essential tools"],
+          thumbnails: [
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50",
+            "https://via.placeholder.com/50"
+          ]
+        },
+      ];
+
+  // Handle when a product is clicked to open the modal
+  const handleProductClick = (product) => {
+    setSelectedProduct(product); // Set the selected product
+    setIsModalOpen(true); // Open the modal
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Close the modal
+  };
+
   return (
     <section className="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
-      <section className="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start">
+      <section className="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
         {products.map((product) => (
-          <section key={product.id} className={`p-5 py-10 ${product.bgColor} text-center transform duration-500 hover:-translate-y-2 cursor-pointer`}>
-            {/* <div className="space-x-1 flex justify-center mt-10">
-              {[...Array(4)].map((_, index) => (
-                <Rating key={index} filled={index < 4} />
-              ))}
-              <Rating filled={false} />
-            </div> */}
-            <h1 className="text-3xl my-5">{product.name}</h1>
-            <p className="mb-5">{product.description}</p>
-            <h2 className="font-semibold mb-5">{product.price}</h2>
-            <button className={`p-2 px-6 ${product.bgColor === 'bg-purple-50' ? 'bg-purple-500' : product.bgColor === 'bg-green-50' ? 'bg-green-500' : product.bgColor === 'bg-red-50' ? 'bg-red-500' : 'bg-blue-500'} text-white rounded-md hover:${product.bgColor === 'bg-purple-50' ? 'bg-purple-600' : product.bgColor === 'bg-green-50' ? 'bg-green-600' : product.bgColor === 'bg-red-50' ? 'bg-red-600' : 'bg-blue-600'}`}>Add To Cart</button>
-          </section>
+          <div
+            key={product.id}
+            className={`p-5 py-10 ${product.bgColor} text-center transform duration-500 hover:-translate-y-2 cursor-pointer rounded-lg shadow-lg`}
+            onClick={() => handleProductClick(product)}
+          >
+            <div className="h-48 flex items-center justify-center mb-4">
+              <img src={product.image} alt={product.name} className="max-h-full max-w-full" />
+            </div>
+            <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
+            <p className="text-gray-600 mb-4">{product.description}</p>
+            <h2 className="text-lg font-semibold">{product.price}</h2>
+          </div>
         ))}
       </section>
+
+
+      {/* Product Modal */}
+      <ProductModal
+        isOpen={isModalOpen} // Ensure isOpen is passed as true
+        onClose={handleCloseModal}
+        product={selectedProduct} // Pass the selected product to the modal
+      />
     </section>
   );
 };
