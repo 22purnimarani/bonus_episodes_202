@@ -1,19 +1,36 @@
-import Notification from "./components/Notification"
+import Notification from "./components/Notification";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Promo from "./components/Promo";
 import ServiceSection from "./components/ServiceSection";
-
+import FAQ from "./components/FAQ";
+import ProductList from "./components/ProductList"; // Import your ProductList component
+import PromoCards from "./components/PromoCards";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import FeaturedProduct from "./components/FeaturedProduct";
 
 function App() {
   return (
-    <>
-      <Notification/>
-      <Header/>
-      <Hero/>
-      <Promo/>
-      <ServiceSection/>
-    </>
+    <Router>
+      <Notification />
+      <Header />
+      <Routes>
+        {/* Define the route for the home page */}
+        <Route path="/" element={
+          <>
+            <Hero />
+            <FeaturedProduct />
+            <PromoCards/>
+            <ServiceSection />
+            <FAQ />
+          </>
+        } />
+        
+        {/* Define the route for the ProductList page */}
+        <Route path="/products" element={<ProductList />} />
+        
+        {/* Add other routes here as needed */}
+      </Routes>
+    </Router>
   );
 }
 
