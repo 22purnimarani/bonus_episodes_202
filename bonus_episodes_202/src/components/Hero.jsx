@@ -54,12 +54,12 @@ const Hero = () => {
             <img
               src={slide.img}
               alt={slide.title}
-              className="w-full h-[500px] object-cover" // `object-cover` sets a constant height
+              className="w-full h-[500px] object-cover" 
             />
             <div className="absolute inset-0  bg-sage bg-opacity-50 flex flex-col justify-center items-baseline p-4 ml-8 mr-8">
-              <h1 className="text-4xl font-bold font-fligen text-terracotta">{slide.title}</h1>
+              <h1 className="text-4xl font-bold font-fligen text-black">{slide.title}</h1>
               <p className="text-lg text-black mt-4 ml-10 mr-10 font-yeseva ">{slide.description}</p>
-              <Link to="/products" className="mt-4 inline-block bg-terracotta text-white font-bold px-4 py-2 rounded">{slide.buttonText}</Link>
+              <p className="mt-4 inline-block bg-terracotta text-rose-50 font-bold px-4 py-2 rounded">{slide.buttonText}</p>
              
             </div>
           </div>
