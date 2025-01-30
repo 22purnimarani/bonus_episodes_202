@@ -6,14 +6,20 @@ import {
   faSearch,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  const navigate = useNavigate(); 
+  const handleSearchClick = () => {
+    // When the search button is clicked, navigate to the product page
+    navigate("/products");
+  };
   return (
     <header className="mt-8 top-0 left-0 right-0 bg-ivory shadow-md z-20">
       {/* Top Section with Logo, Search Bar, and Icons */}
@@ -40,6 +46,7 @@ const Header = () => {
             <button
               className="absolute right-2 top-1/2 transform -translate-y-1/2 text-terracotta focus:outline-none"
               aria-label="Search"
+              onClick={handleSearchClick}
             >
               <FontAwesomeIcon icon={faSearch} />
             </button>
