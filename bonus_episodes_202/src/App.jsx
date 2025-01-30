@@ -1,6 +1,7 @@
 import Notification from "./components/Notification";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Promo from "./components/Promo";
 import ServiceSection from "./components/ServiceSection";
 import FAQ from "./components/FAQ";
 import ProductList from "./components/ProductList"; // Import your ProductList component
@@ -18,7 +19,7 @@ function App() {
         <Route path="/" element={
           <>
             <Hero />
-            <FeaturedProduct />
+            <FeaturedProduct/>
             <PromoCards/>
             <ServiceSection />
             <FAQ />
